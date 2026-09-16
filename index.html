@@ -641,6 +641,46 @@ footer {
 }
 
 /* ═══════════════════════════════
+   CLIENTES
+═══════════════════════════════ */
+.clientes-section { background: var(--bg); }
+.clientes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+.cliente-logo {
+  background: var(--white);
+  border: 1px solid #E8ECF4;
+  border-radius: 10px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 90px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.cliente-logo:hover {
+  box-shadow: 0 4px 20px rgba(12,26,58,0.1);
+  transform: translateY(-2px);
+}
+.cliente-logo img {
+  max-width: 100%;
+  max-height: 56px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter 0.2s, opacity 0.2s;
+}
+.cliente-logo:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* ═══════════════════════════════
    HAMBURGER
 ═══════════════════════════════ */
 .nav-hamburger {
@@ -995,6 +1035,31 @@ footer {
       <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-36-atualizada-2024-1.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-36</span><span class="nr-name">Abate e Processamento de Carnes</span></a>
       <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/inspecao-do-trabalho/seguranca-e-saude-no-trabalho/ctpp-nrs/nr-37-atualizada-2023.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-37</span><span class="nr-name">Plataformas de Petróleo</span></a>
       <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/NR38atualizada2026.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-38</span><span class="nr-name">Limpeza Urbana e Resíduos Sólidos</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CLIENTES ═══════════ -->
+<section class="section clientes-section">
+  <div class="section-inner">
+    <div class="section-label">Quem confia na DFS</div>
+    <h2 class="section-title">Nossos <span>clientes</span></h2>
+    <p class="section-subtitle">Empresas de diferentes segmentos que escolheram a DFS para cuidar da segurança e saúde dos seus colaboradores.</p>
+    <div class="clientes-grid">
+      <div class="cliente-logo"><img src="clientes/panela-velha.png" alt="Panela Velha"></div>
+      <div class="cliente-logo"><img src="clientes/posto-you-vip.png" alt="Posto You Vip"></div>
+      <div class="cliente-logo"><img src="clientes/saude-mais.jpeg" alt="Saúde +"></div>
+      <div class="cliente-logo"><img src="clientes/alcantara.png" alt="Alcântara"></div>
+      <div class="cliente-logo"><img src="clientes/atende-ja.png" alt="Atende Já"></div>
+      <div class="cliente-logo"><img src="clientes/brasilencorp.png" alt="Brasilencorp"></div>
+      <div class="cliente-logo"><img src="clientes/cdt.png" alt="CDT"></div>
+      <div class="cliente-logo"><img src="clientes/edy-engenharia.png" alt="Edy Engenharia"></div>
+      <div class="cliente-logo"><img src="clientes/espaco-gourmet.png" alt="Espaço Gourmet"></div>
+      <div class="cliente-logo"><img src="clientes/fabio-roberto.png" alt="Fabio Roberto"></div>
+      <div class="cliente-logo"><img src="clientes/laminadora-boaretto.png" alt="Laminadora Boaretto"></div>
+      <div class="cliente-logo"><img src="clientes/planalto.png" alt="Planalto"></div>
+      <div class="cliente-logo"><img src="clientes/servitec.png" alt="Servitec"></div>
+      <div class="cliente-logo"><img src="clientes/soferaco.jpg" alt="Soferaço"></div>
     </div>
   </div>
 </section>
