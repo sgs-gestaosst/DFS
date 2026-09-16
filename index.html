@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DFS Gestão em Consultorias — Consultoria especializada em Segurança do Trabalho e Saúde Ocupacional. PGR, PCMSO, NRs, Laudos, ISO 45001.">
+<title>DFS Gestão em Consultorias — Segurança · Saúde · Resultado</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0C1A3A;
+  --navy2:   #071228;
+  --blue:    #2B7FFF;
+  --blue2:   #1a5fcc;
+  --green:   #1F8A5F;
+  --gold:    #B8863E;
+  --light:   #E0E6F0;
+  --muted:   #6B7A99;
+  --border:  rgba(43,127,255,0.15);
+  --white:   #FFFFFF;
+  --bg:      #F4F6FB;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════
+   NAV
+═══════════════════════════════ */
+nav {
+  background: var(--navy2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.nav-logo img {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.nav-logo .nav-brand {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.04em;
+}
+.nav-logo .nav-brand span { color: var(--blue); }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-cta {
+  background: var(--blue);
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 6px;
+  opacity: 1 !important;
+}
+.nav-cta:hover { background: var(--blue2); }
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero {
+  background: linear-gradient(150deg, var(--navy2) 0%, var(--navy) 50%, #0d1f4a 100%);
+  padding: 48px 24px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -100px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(43,127,255,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: 10%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(31,138,95,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+.hero-logo-wrap {
+  flex-shrink: 0;
+}
+.hero-logo-wrap img {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 4px rgba(43,127,255,0.3), 0 24px 60px rgba(0,0,0,0.4);
+}
+.hero-text { flex: 1; }
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+}
+.hero-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.hero-title span { color: var(--blue); }
+.hero-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-desc {
+  font-size: 17px;
+  color: var(--light);
+  opacity: 0.85;
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 36px;
+  text-align: justify;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 24px rgba(43,127,255,0.4);
+  transition: background 0.2s, transform 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--blue2); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  color: var(--light);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+.hero-title-block { flex: 1.4; }
+.hero-cta-block {
+  flex: 1;
+  padding-left: 40px;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.hero-stats-bar {
+  max-width: 1100px;
+  margin: 28px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+.hero-stat-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(43,127,255,0.18);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hs-icon { font-size: 22px; flex-shrink: 0; }
+.hs-val { font-size: 20px; font-weight: 900; color: var(--blue); line-height: 1; }
+.hs-label { font-size: 11px; color: var(--light); opacity: 0.6; margin-top: 3px; line-height: 1.4; }
+.hero-pillars {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.h-pillar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.h-pillar .p-icon { font-size: 28px; }
+.h-pillar .p-text { }
+.h-pillar .p-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.h-pillar .p-desc {
+  font-size: 12px;
+  color: var(--light);
+  opacity: 0.5;
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════
+   SECTION BASE
+═══════════════════════════════ */
+.section { padding: 80px 24px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.section-title span { color: var(--blue); }
+.section-subtitle {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 48px;
+}
+
+/* ═══════════════════════════════
+   DIFERENCIAIS
+═══════════════════════════════ */
+.diferenciais { background: var(--bg); }
+.dif-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.dif-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 32px 28px;
+  border: 1px solid #E8ECF4;
+  border-top: 4px solid var(--blue);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.dif-card:hover { box-shadow: 0 8px 32px rgba(12,26,58,0.1); transform: translateY(-2px); }
+.dif-card.green-top { border-top-color: var(--green); }
+.dif-card.gold-top  { border-top-color: var(--gold); }
+.dif-icon { font-size: 36px; margin-bottom: 16px; }
+.dif-title { font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.dif-desc { font-size: 14px; color: var(--muted); line-height: 1.65; text-align: justify; }
+
+/* ═══════════════════════════════
+   SERVIÇOS
+═══════════════════════════════ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.srv-category {
+  background: var(--white);
+  border: 1px solid #E8ECF4;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.srv-cat-header {
+  background: var(--navy);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.srv-cat-header .cat-icon { font-size: 22px; }
+.srv-cat-header .cat-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.srv-list { padding: 8px 0; }
+.srv-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 24px;
+  border-bottom: 1px solid #F4F6FB;
+  transition: background 0.15s;
+}
+.srv-item:last-child { border-bottom: none; }
+.srv-item:hover { background: #F8FAFF; }
+.srv-item .srv-check { color: var(--blue); font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+.srv-item .srv-info { flex: 1; }
+.srv-item .srv-name { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+.srv-item .srv-desc { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+.nr-tag {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  margin-right: 6px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.nr-tag.red { background: #c0392b; }
+
+/* ═══════════════════════════════
+   POR QUE DFS
+═══════════════════════════════ */
+.porque { background: var(--navy); }
+.porque .section-title { color: var(--white); }
+.porque .section-subtitle { color: var(--light); opacity: 0.7; }
+.porque-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.pq-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(43,127,255,0.15);
+  border-radius: 12px;
+  padding: 28px 22px;
+  text-align: center;
+}
+.pq-num {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.pq-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.4;
+}
+.pq-desc {
+  font-size: 12px;
+  color: var(--light);
+  opacity: 0.5;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════
+   NORMAS SECTION
+═══════════════════════════════ */
+.normas { background: var(--bg); }
+.nr-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+}
+.nr-chip {
+  background: var(--white);
+  border: 1px solid #D8E0EE;
+  border-radius: 6px;
+  padding: 6px 12px 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.nr-chip:hover { border-color: var(--blue); box-shadow: 0 2px 10px rgba(43,127,255,0.12); }
+.nr-chip .nr-num {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--blue);
+  background: rgba(43,127,255,0.09);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.nr-chip .nr-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+/* ═══════════════════════════════
+   PROCESSO
+═══════════════════════════════ */
+.processo-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.processo-steps::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+  z-index: 0;
+}
+.proc-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+.proc-num {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 3px solid var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--blue);
+  margin-bottom: 16px;
+  background: var(--white);
+  box-shadow: 0 4px 16px rgba(43,127,255,0.15);
+}
+.proc-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.proc-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════
+   CTA SECTION
+═══════════════════════════════ */
+.cta-section {
+  background: linear-gradient(135deg, var(--navy2) 0%, var(--navy) 60%, #0d1f4a 100%);
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(43,127,255,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(31,138,95,0.07) 0%, transparent 50%);
+}
+.cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.cta-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.cta-title span { color: var(--blue); }
+.cta-sub {
+  font-size: 17px;
+  color: var(--light);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+.cta-contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--light);
+  opacity: 0.6;
+  font-size: 14px;
+}
+.contact-item .c-icon { font-size: 18px; }
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer {
+  background: var(--navy2);
+  padding: 40px 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.footer-brand .brand-text { }
+.footer-brand .b-name { font-size: 15px; font-weight: 800; color: var(--white); }
+.footer-brand .b-name span { color: var(--blue); }
+.footer-brand .b-sub { font-size: 11px; color: var(--light); opacity: 0.4; letter-spacing: 0.1em; text-transform: uppercase; }
+.footer-info { font-size: 13px; color: var(--light); opacity: 0.35; text-align: right; }
+.footer-pillars {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.footer-pillars .fp { color: var(--light); opacity: 0.4; }
+.footer-pillars .fp.blue { color: var(--blue); opacity: 1; }
+.footer-pillars .fp.green { color: #4CAF82; opacity: 1; }
+.social-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.social-link {
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  text-decoration: none;
+}
+.social-link:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-2px); }
+.social-link svg { width: 18px; height: 18px; fill: rgba(255,255,255,0.6); }
+.social-link:hover svg { fill: #fff; }
+.social-link.disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.social-link.linkedin-soon {
+  opacity: 0.4;
+  position: relative;
+}
+.social-link.linkedin-soon::after {
+  content: 'Em breve';
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--light);
+  opacity: 0.5;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media (max-width: 768px) {
+  .hero-inner { flex-direction: column; text-align: center; gap: 24px; }
+  .hero-logo-wrap img { width: 120px; height: 120px; }
+  .hero-desc { margin: 0 0 20px; }
+  .hero-actions { justify-content: center; }
+  .hero-pillars { flex-direction: column; gap: 16px; }
+  .hero-cta-block { padding-left: 0; border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; }
+  .hero-stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+  .dif-layout { grid-template-columns: 1fr; gap: 24px; }
+  .dif-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .porque-grid { grid-template-columns: repeat(2, 1fr); }
+  .processo-steps { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .processo-steps::before { display: none; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-info { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.jpeg" alt="DFS Gestão">
+      <div class="nav-brand">DFS <span>Gestão</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#normas">NRs</a></li>
+      <li><a href="#processo">Como funciona</a></li>
+      <li><a href="#contato" class="nav-cta">Fale conosco</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
+      <img src="logo.jpeg" alt="DFS Gestão em Consultorias">
+    </div>
+    <div class="hero-title-block">
+      <div class="hero-eyebrow">Consultoria em SST e Saúde Ocupacional</div>
+      <h1 class="hero-title">DFS <span>Gestão</span><br>em Consultorias</h1>
+      <div class="hero-subtitle">Segurança · Saúde · Resultado</div>
+    </div>
+    <div class="hero-cta-block">
+      <p class="hero-desc">
+        Protegemos empresas e colaboradores através de soluções completas em Segurança do Trabalho e Saúde Ocupacional — da conformidade legal à gestão estratégica de riscos.
+      </p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">Diagnóstico gratuito</a>
+        <a href="#servicos" class="btn-outline">Ver serviços</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-pillars">
+    <div class="h-pillar">
+      <div class="p-icon">🛡️</div>
+      <div class="p-text">
+        <div class="p-name">Segurança</div>
+        <div class="p-desc">Conformidade legal e NRs</div>
+      </div>
+    </div>
+    <div class="h-pillar">
+      <div class="p-icon">🩺</div>
+      <div class="p-text">
+        <div class="p-name">Saúde</div>
+        <div class="p-desc">PCMSO e saúde ocupacional</div>
+      </div>
+    </div>
+    <div class="h-pillar">
+      <div class="p-icon">📈</div>
+      <div class="p-text">
+        <div class="p-name">Resultado</div>
+        <div class="p-desc">Menos passivo, mais produtividade</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DIFERENCIAIS ═══════════ -->
+<section class="section diferenciais">
+  <div class="section-inner">
+    <div class="section-label">Por que escolher a DFS</div>
+    <h2 class="section-title">Consultoria que entrega <span>resultado real</span></h2>
+    <p class="section-subtitle">Não vendemos documentos — construímos ambientes de trabalho mais seguros e empresas mais protegidas.</p>
+    <div class="dif-grid">
+      <div class="dif-card">
+        <div class="dif-icon">⚖️</div>
+        <div class="dif-title">Conformidade Legal</div>
+        <div class="dif-desc">Sua empresa em dia com todas as NRs, eSocial SST e legislação trabalhista. Evite multas, interdições e passivos.</div>
+      </div>
+      <div class="dif-card green-top">
+        <div class="dif-icon">🩺</div>
+        <div class="dif-title">Saúde do Colaborador</div>
+        <div class="dif-desc">Exames médicos, gestão de afastamentos, indicadores de saúde e programas que reduzem absenteísmo e rotatividade.</div>
+      </div>
+      <div class="dif-card gold-top">
+        <div class="dif-icon">📊</div>
+        <div class="dif-title">Resultado para o Negócio</div>
+        <div class="dif-desc">Segurança que gera retorno: menos acidentes, menos custo com afastamentos, e mais produtividade no chão de fábrica.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SERVIÇOS ═══════════ -->
+<section class="section" id="servicos">
+  <div class="section-inner">
+    <div class="section-label">O que fazemos</div>
+    <h2 class="section-title">Serviços <span>especializados</span> em SST</h2>
+    <p class="section-subtitle">Atendemos empresas de todos os portes e segmentos com soluções completas e integradas.</p>
+    <div class="services-grid">
+
+      <!-- Conformidade Legal -->
+      <div class="srv-category">
+        <div class="srv-cat-header">
+          <div class="cat-icon">📋</div>
+          <div class="cat-name">Conformidade Legal e Documentação</div>
+        </div>
+        <div class="srv-list">
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">PGR — Programa de Gerenciamento de Riscos</div><div class="srv-desc">Substituto do PPRA — obrigatório para todas as empresas com CLT</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">PCMSO — Controle Médico de Saúde Ocupacional</div><div class="srv-desc">Planejamento e acompanhamento da saúde dos colaboradores</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">LTCAT — Laudo Técnico das Condições Ambientais</div><div class="srv-desc">Caracterização de atividades com exposição a agentes nocivos</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">PPP — Perfil Profissiográfico Previdenciário</div><div class="srv-desc">Histórico laboral para aposentadoria especial</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">eSocial SST</div><div class="srv-desc">Gestão dos eventos S-2210, S-2220 e S-2240</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Adequação às NRs</div><div class="srv-desc">Diagnóstico e plano de conformidade — NR-1 a NR-38</div></div></div>
+        </div>
+      </div>
+
+      <!-- Laudos Técnicos -->
+      <div class="srv-category">
+        <div class="srv-cat-header">
+          <div class="cat-icon">🔬</div>
+          <div class="cat-name">Laudos e Avaliações Técnicas</div>
+        </div>
+        <div class="srv-list">
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Laudo de Insalubridade</div><div class="srv-desc">Avaliação e enquadramento conforme NR-15</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Laudo de Periculosidade</div><div class="srv-desc">Avaliação e enquadramento conforme NR-16</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Avaliação de Ruído</div><div class="srv-desc">Dosimetria e mapa de ruído (NHO-01)</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Avaliação de Calor</div><div class="srv-desc">IBUTG — NHO-06 e Anexo III da NR-9</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Laudo Ergonômico NR-17</div><div class="srv-desc">AEP, Programa de Gestão Ergonômica e AET</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Laudo NR-12</div><div class="srv-desc">Conformidade de máquinas e equipamentos</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Avaliação Psicossocial</div><div class="srv-desc">Identificação e controle de riscos psicossociais — NR-1</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Mapeamento de Riscos</div><div class="srv-desc">Representação gráfica no layout da planta</div></div></div>
+        </div>
+      </div>
+
+      <!-- Treinamentos -->
+      <div class="srv-category">
+        <div class="srv-cat-header">
+          <div class="cat-icon">🎓</div>
+          <div class="cat-name">Treinamentos e Capacitações</div>
+        </div>
+        <div class="srv-list">
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name"><span class="nr-tag">NR-5</span> CIPA</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name"><span class="nr-tag">NR-35</span> Trabalho em Altura</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name"><span class="nr-tag">NR-33</span> Espaço Confinado</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name"><span class="nr-tag">NR-10</span> Segurança em Instalações Elétricas</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name"><span class="nr-tag">NR-12</span> Máquinas e Equipamentos</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name"><span class="nr-tag">NR-23</span> Brigada de Incêndio</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name"><span class="nr-tag">NR-6</span> EPI — Uso e Conservação</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name"><span class="nr-tag red">SOS</span> Primeiros Socorros</div></div></div>
+        </div>
+      </div>
+
+      <!-- Saúde + Sistemas + Investigação -->
+      <div class="srv-category">
+        <div class="srv-cat-header">
+          <div class="cat-icon">🏥</div>
+          <div class="cat-name">Saúde Ocupacional e Sistemas</div>
+        </div>
+        <div class="srv-list">
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Coordenação de Exames Médicos</div><div class="srv-desc">Admissional, periódico, retorno, mudança de risco e/ou função e demissional</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Gestão de Afastamentos</div><div class="srv-desc">CAT, B31/B91, interface com INSS e readaptação</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Indicadores de SST</div><div class="srv-desc">TF, TG, taxa de incidência e near miss</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Implantação ISO 45001</div><div class="srv-desc">Da análise de gap até a certificação</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">SGI — Sistema de Gestão Integrado</div><div class="srv-desc">ISO 9001 + ISO 14001 + ISO 45001</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Análise de Causa Raiz</div><div class="srv-desc">Para acidentes graves e com afastamento</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Due Diligence em SST</div><div class="srv-desc">Levantamento de passivos para fusões e aquisições</div></div></div>
+          <div class="srv-item"><span class="srv-check">✔</span><div class="srv-info"><div class="srv-name">Gestão de Terceiros</div><div class="srv-desc">Requisitos SST para prestadores e contratados</div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ NÚMEROS ═══════════ -->
+<section class="section porque">
+  <div class="section-inner">
+    <div class="section-label">Impacto real</div>
+    <h2 class="section-title">O custo de <span>não ter</span> SST</h2>
+    <p class="section-subtitle">Dados que mostram por que segurança é investimento, não custo.</p>
+    <div class="porque-grid">
+      <div class="pq-card">
+        <div class="pq-num">700<span style="font-size:24px;">mil</span></div>
+        <div class="pq-label">Acidentes de trabalho por ano no Brasil</div>
+        <div class="pq-desc">Fonte: Previdência Social / AEAT</div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-num">R$25<span style="font-size:24px;">mil</span></div>
+        <div class="pq-label">Custo médio de um acidente com afastamento</div>
+        <div class="pq-desc">Diretos + indiretos por ocorrência</div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-num">85<span style="font-size:24px;">%</span></div>
+        <div class="pq-label">Dos acidentes são preveníveis com gestão adequada</div>
+        <div class="pq-desc">Treinamento + documentação + cultura</div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-num">3x</div>
+        <div class="pq-label">Retorno sobre o investimento em SST</div>
+        <div class="pq-desc">Para cada R$1 investido, economiza R$3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ NRS ═══════════ -->
+<section class="section normas" id="normas">
+  <div class="section-inner">
+    <div class="section-label">Expertise técnica</div>
+    <h2 class="section-title">Normas Regulamentadoras que <span>dominamos</span></h2>
+    <p class="section-subtitle" style="margin-bottom:24px;">As 36 NRs vigentes do MTE — clique em qualquer uma para acessar o texto oficial.</p>
+    <div class="nr-chips">
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-01-atualizada-2024-i-1.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-1</span><span class="nr-name">Disposições Gerais e PGR</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-03_atualizada_2019.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-3</span><span class="nr-name">Embargo ou Interdição</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-04-atualizada-2023.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-4</span><span class="nr-name">SESMT</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/NR05atualizada2023.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-5</span><span class="nr-name">CIPA</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-06-atualizada-2025-ii.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-6</span><span class="nr-name">EPI</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-07-atualizada-2022-1.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-7</span><span class="nr-name">PCMSO</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-08-atualizada-2022.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-8</span><span class="nr-name">Edificações</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-09-atualizada-2026.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-9</span><span class="nr-name">Avaliação de Riscos Ambientais</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/inspecao-do-trabalho/seguranca-e-saude-no-trabalho/sst-portarias/2026-1/portaria-mte-no-737-nova-nr-10.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-10</span><span class="nr-name">Segurança em Eletricidade</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-11-atualizada-2016.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-11</span><span class="nr-name">Transporte e Armazenagem</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-12-atualizada-2025.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-12</span><span class="nr-name">Máquinas e Equipamentos</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-13-atualizada-2023-b.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-13</span><span class="nr-name">Vasos de Pressão</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-14-atualizada-2022.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-14</span><span class="nr-name">Fornos</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-15-atualizada-2025.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-15</span><span class="nr-name">Insalubridade</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-16-atualizada-2025-ii.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-16</span><span class="nr-name">Periculosidade</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-17-atualizada-2023.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-17</span><span class="nr-name">Ergonomia</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/NR18atualizada2026I.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-18</span><span class="nr-name">Construção Civil</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-19-atualizada-2023.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-19</span><span class="nr-name">Explosivos</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-20-atualizada-2025.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-20</span><span class="nr-name">Inflamáveis e Combustíveis</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-21.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-21</span><span class="nr-name">Trabalho a Céu Aberto</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-22-atualizada-2026.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-22</span><span class="nr-name">Mineração</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-23-atualizada-2022.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-23</span><span class="nr-name">Proteção contra Incêndio</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-24-atualizada-2022.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-24</span><span class="nr-name">Condições Sanitárias</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-25-atualizada-2022-1.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-25</span><span class="nr-name">Resíduos Industriais</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-26-atualizada-2022.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-26</span><span class="nr-name">Sinalização de Segurança</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-28-atualizada-2026.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-28</span><span class="nr-name">Fiscalização e Penalidades</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-29-atualizada-2023.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-29</span><span class="nr-name">Trabalho Portuário</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-30-atualizada-2023.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-30</span><span class="nr-name">Trabalho Aquaviário</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-31-atualizada-2024-2.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-31</span><span class="nr-name">Agricultura e Pecuária</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-32-atualizada-2023-1.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-32</span><span class="nr-name">Serviços de Saúde</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/arquivos/normas-regulamentadoras/nr-33-atualizada-2022-_retificada.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-33</span><span class="nr-name">Espaço Confinado</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-34-atualizada-2023-2.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-34</span><span class="nr-name">Construção Naval</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-35-atualizada-2025-1.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-35</span><span class="nr-name">Trabalho em Altura</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/nr-36-atualizada-2024-1.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-36</span><span class="nr-name">Abate e Processamento de Carnes</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/inspecao-do-trabalho/seguranca-e-saude-no-trabalho/ctpp-nrs/nr-37-atualizada-2023.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-37</span><span class="nr-name">Plataformas de Petróleo</span></a>
+      <a class="nr-chip" href="https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/NR38atualizada2026.pdf" target="_blank" rel="noopener"><span class="nr-num">NR-38</span><span class="nr-name">Limpeza Urbana e Resíduos Sólidos</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROCESSO ═══════════ -->
+<section class="section" id="processo">
+  <div class="section-inner">
+    <div class="section-label">Como trabalhamos</div>
+    <h2 class="section-title">Do diagnóstico ao <span>resultado</span></h2>
+    <p class="section-subtitle">Processo estruturado que garante conformidade e melhoria contínua.</p>
+    <div class="processo-steps">
+      <div class="proc-step">
+        <div class="proc-num">1</div>
+        <div class="proc-title">Diagnóstico</div>
+        <div class="proc-desc">Visita técnica e levantamento completo das condições da empresa</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">2</div>
+        <div class="proc-title">Plano de Ação</div>
+        <div class="proc-desc">Mapeamento de riscos e priorização das adequações necessárias</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">3</div>
+        <div class="proc-title">Implantação</div>
+        <div class="proc-desc">Elaboração de documentos, treinamentos e adequações técnicas</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">4</div>
+        <div class="proc-title">Gestão Contínua</div>
+        <div class="proc-desc">Monitoramento, atualizações e suporte permanente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="cta-section" id="contato">
+  <div class="cta-inner">
+    <h2 class="cta-title">Sua empresa está em <span>conformidade</span>?</h2>
+    <p class="cta-sub">Agende um diagnóstico gratuito. Nossa equipe avalia sua situação atual e apresenta um plano personalizado — sem compromisso.</p>
+    <a href="mailto:redessociais.dfs@gmail.com" class="btn-primary" style="font-size:17px; padding:16px 40px;">Solicitar diagnóstico gratuito</a>
+    <div class="cta-contact-info">
+      <div class="contact-item"><span class="c-icon">📧</span> redessociais.dfs@gmail.com</div>
+      <div class="contact-item"><span class="c-icon">📍</span> Pará — Brasil</div>
+    </div>
+    <div class="social-links" style="justify-content:center; margin-top:28px;">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/dfs.sst/" target="_blank" rel="noopener" class="social-link" title="Instagram @dfs.sst">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/profile.php?id=61594266604775" target="_blank" rel="noopener" class="social-link" title="Facebook DFS Gestão">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.532-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      </a>
+      <!-- LinkedIn (em breve) -->
+      <a href="#" class="social-link linkedin-soon" title="LinkedIn — Em breve">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.jpeg" alt="DFS Gestão">
+      <div class="brand-text">
+        <div class="b-name">DFS <span>Gestão</span></div>
+        <div class="b-sub">Em Consultorias</div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+      <div class="footer-pillars">
+        <span class="fp blue">Segurança</span>
+        <span class="fp">·</span>
+        <span class="fp green">Saúde</span>
+        <span class="fp">·</span>
+        <span class="fp">Resultado</span>
+      </div>
+      <div class="social-links" style="position:relative; padding-bottom:4px;">
+        <a href="https://www.instagram.com/dfs.sst/" target="_blank" rel="noopener" class="social-link" title="Instagram @dfs.sst">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61594266604775" target="_blank" rel="noopener" class="social-link" title="Facebook DFS Gestão">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.532-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+        <a href="#" class="social-link linkedin-soon" title="LinkedIn — Em breve">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-info">
+      © 2026 DFS Gestão em Consultorias<br>
+      Todos os direitos reservados
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
